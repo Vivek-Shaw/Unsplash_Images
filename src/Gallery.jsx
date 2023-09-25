@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { useGlobalContext } from "./context";
+import GalleryCard from "./GalleryCard";
 
 const url = `https://api.unsplash.com/search/photos?client_id=${
   import.meta.env.VITE_API_KEY
@@ -46,12 +47,7 @@ const Gallery = () => {
       {results.map((item) => {
         const url = item?.urls?.regular;
         return (
-          <img
-            src={url}
-            alt={item.alt_description}
-            key={item.id}
-            className="img"
-          />
+          <GalleryCard key={item.id} url={url} {...item} />
         );
       })}
     </section>
