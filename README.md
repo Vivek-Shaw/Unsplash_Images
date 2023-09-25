@@ -161,3 +161,10 @@ Therefore, without including searchTerm in the queryKey array, the useQuery hook
 #### Vite ENV Vars
 
 - .env : must be included in .gitignore
+
+
+
+###### Ideas to be added ######
+
+1. Shuffle image.
+2. remove display add onclick event on the image iteself.
