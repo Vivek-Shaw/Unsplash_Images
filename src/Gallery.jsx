@@ -9,11 +9,12 @@ const url = `https://api.unsplash.com/search/photos?client_id=${
 }`;
 
 const Gallery = () => {
-    const {searchTerm}=useGlobalContext();
+  const { searchTerm } = useGlobalContext();
   const response = useQuery({
-    queryKey: ["images",searchTerm],
+    queryKey: ["images", searchTerm],
     queryFn: async () => {
-      const result = await axios.get(`${url}&query=${searchTerm}`);
+      const result = await axios.get(`${url}&query=${searchTerm}&per_page=30`);
+      console.log(result.data);
       return result.data;
     },
   });
@@ -42,12 +43,16 @@ const Gallery = () => {
       </section>
     );
   }
+
+  
   return (
     <section className="image-container">
       {results.map((item) => {
         const url = item?.urls?.regular;
-        return (
-          <GalleryCard key={item.id} url={url} {...item} />
+        return (<>
+        <GalleryCard key={item.id} url={url} {...item} />
+        
+        </>
         );
       })}
     </section>
